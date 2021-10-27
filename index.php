@@ -37,14 +37,14 @@
             $result= mysql_query ("SELECT * FROM restaurants) or die("SELECT Error: ".mysql_error());
              while($row = mysqli_fetch_array($result))
              { 
-            print '<tr>'; 
-            print '<td>' . $row['name'] . '</td>'; 
-            print '<td>'. $row['hours'] . '</td>'; 
-            print '<td>' . $row['type'] . '</td>'; 
-            print '<td>' . $row['price'] . '</td>';
-            print '<td>' . $row['rating'] . '</td>';
-            print '<td><a href=' . $row['menu'] . '' target='_blank'>Menu</a></td>';
-            print '</tr>'; 
+            echo "<tr>"; 
+            echo "<td>" . $row['name'] . "</td>'" 
+            echo "<td>'. $row['hours'] . '</td>"; 
+            echo "<td>' . $row['type'] . '</td>"; 
+            echo "<td>' . $row['price'] . '</td>";
+            echo "<td>' . $row['rating'] . '</td>";
+            echo "<td><a href='" . $row['menu'] . "' target='_blank'>Menu</a></td>";
+            echo "</tr>"; 
              }
             ?>
 
