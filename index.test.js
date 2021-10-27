@@ -29,19 +29,4 @@ describe('index.html', () => {
     expect(getByText(container, 'Restaurant List')).toBeInTheDocument()
   })
 
-  it('renders a new paragraph via JavaScript when the button is clicked', async () => {
-    const button = getByText(container, 'Click me for a terrible pun')
-    
-    fireEvent.click(button)
-    let generatedParagraphs = container.querySelectorAll('#pun-container p')
-    expect(generatedParagraphs.length).toBe(1)
-
-    fireEvent.click(button)
-    generatedParagraphs = container.querySelectorAll('#pun-container p')
-    expect(generatedParagraphs.length).toBe(2)
-
-    fireEvent.click(button)
-    generatedParagraphs = container.querySelectorAll('#pun-container p')
-    expect(generatedParagraphs.length).toBe(3)
-  })
 })
