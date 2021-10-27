@@ -14,7 +14,7 @@ router.get('/shoes', async (req, res) => {
   const query = 'SELECT * FROM restaurants';
   // const query = 'SELECT shoe_brand FROM shoes';
 
-  const result = db.query(query);
+  const result = await db.query(query);
 
   res.render('shoe-list', { rows: result.rows });
 });

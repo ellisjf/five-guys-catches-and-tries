@@ -1,8 +1,134 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
-a {
-  color: #00B7FF;
+#banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  background-color: #b51225;
+  color: white;
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#banner h1 {
+  vertical-align: middle;
+  border: 3px solid white;
+  padding: 0.5em;
+  font-size: 3vh;
+  font-weight: bold;
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none;
+  /* Standard */
+}
+
+#banner h1::hover {
+  color: #b51225;
+  font-size: 3vh;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 25px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #b51225;
+}
+
+#footer p {
+  color: white;
+  font-size: 12px;
+}
+
+#sortBar {
+  height: 10%;
+  width: 100%;
+  top: 10%;
+  left: 0;
+  padding: 0 1% 0 1%;
+  position: fixed;
+}
+
+#sortBar h2 {
+  color: black;
+  vertical-align: middle;
+}
+
+#restaurants {
+  top: 20%;
+  left: 0;
+  margin: 0 1% 0 1%;
+  height: calc(60% - 25px);
+  width: 98%;
+  position: fixed;
+  overflow: auto;
+}
+
+#restaurants table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#restaurants th {
+  background-color: #d6d5d2;
+}
+
+#restaurants th,
+#restaurants td {
+  height: 50px;
+  text-align: center;
+}
+
+img {
+  float: right;
+  width: 20%;
+}
+
+.column {
+  float: left;
+  width: 30%;
+  margin-right: 10px;
+}
+
+a:link {
+  color: black;
+}
+
+a:hover {
+  color: grey;
+}
+
+a:visited {
+  color: darkred;
+}
+
+iframe {
+  position: absolute;
+  bottom: 25px;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  width: calc(100% - 4px);
+  height: 20%;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
 }
