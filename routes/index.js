@@ -5,19 +5,43 @@ const db = require('../db');
 const router = express.Router();
 
 // Home page
-router.get('/', (req, res) => {
-  res.render('index', { title: 'Shoe' });
-});
-
-// List products
-router.get('/shoes', async (req, res) => {
+router.get('/', async (req, res) => {
   const query = 'SELECT * FROM restaurants';
   // const query = 'SELECT shoe_brand FROM shoes';
 
   const result = await db.query(query);
-
-  res.render('shoe-list', { rows: result.rows });
+  res.render('index', { title: 'Shoes', rows: result.rows });
 });
+
+router.get('/create', (req, res) => {
+  res.render('new-restaurant');
+});
+
+router.post('/', async (req, res) => {
+  const query = 'INSERT INTO restaurants (name, type, hours, price, rating, menu) VALUES ($1, $2, $3, $4, $5, $6)';
+  const parameters = [
+    req.body.name,
+    req.body.type,
+    req.body.hours,
+    req.body.price,
+    req.body.rating,
+    req.body.menu,
+  ];
+
+  await db.query(query, parameters);
+
+  res.render('new-restaurant-result', { parameters: JSON.stringify(parameters) });
+});
+
+// List products
+// router.get('/shoes', async (req, res) => {
+//   const query = 'SELECT * FROM restaurants';
+//   // const query = 'SELECT shoe_brand FROM shoes';
+
+//   const result = await db.query(query);
+
+//   res.render('shoe-list', { rows: result.rows });
+// });
 
 // // Sort List by Name of Shoe
 // router.get('/shoe-list', async (req, res) => {
