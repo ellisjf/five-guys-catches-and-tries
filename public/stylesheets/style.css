@@ -73,7 +73,7 @@ body {
   top: 20%;
   left: 0;
   margin: 0 1% 0 1%;
-  height: calc(60% - 25px);
+  height: 200px;
   width: 98%;
   position: fixed;
   overflow: auto;
@@ -124,7 +124,7 @@ iframe {
   padding: 0;
   left: 0;
   width: calc(100% - 4px);
-  height: 20%;
+  height: 40%;
 }
 
 table,
