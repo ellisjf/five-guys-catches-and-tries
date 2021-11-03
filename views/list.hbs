@@ -1,0 +1,32 @@
+<table>
+
+    <tr>
+        <th>Name 
+            {{!-- <a href="/shoe-list?sort=shoe_brandAZ">Sort By Brand A-Z</a><br> <a href="/shoe-list?sort=shoe_brandZA">Sort By Brand Z-A</a> --}}
+        </th>
+        <th>Type 
+            {{!-- <a href="/shoe-list?sort=shoe_nameAZ">Sort By Name A-Z</a><br> <a href="/shoe-list?sort=shoe_nameZA">Sort By Name Z-A</a> --}}
+        </th>
+        <th>Hours
+    {{!-- <form action="/shoe-filter">
+            <input class="form-control" type="text" name="search">
+            <button type="submit" class="btn btn-primary">Submit</button>
+    </form> --}}
+        </th>
+        <th>Price</th>
+        <th>Rating</th>
+        <th>Menu</th>
+    </tr>
+    {{#each rows}}
+    <tr>
+        <td>{{name}}</td>
+        <td>{{type}}</td>
+        <td>{{hours}}</td>
+        <td>{{price}}</td>
+        <td>{{rating}}</td>
+        <td>{{menu}}</td>
+    </tr>
+
+    {{/each}}
+</table>
+
