@@ -3,11 +3,29 @@ const express = require('express');
 const db = require('../db');
 
 const router = express.Router();
+let rn = false;
+let rt = true;
 
 // Home page
 router.get('/', async (req, res) => {
   const query = 'SELECT * FROM restaurants';
   // const query = 'SELECT shoe_brand FROM shoes';
+  
+  if (req.query.sort === 'name') {
+    if (rn === true) {
+      query += ' ORDER BY name';
+    } else {
+      query += ' ORDER BY name DESC';
+    }
+    rn = !rn;
+  } else if (req.query.sort === 'type') {
+    if (rt === true) {
+      query += ' ORDER BY type';
+    } else {
+      query += ' ORDER BY type DESC';
+    }
+    rt = !rt;
+  }
 
   const result = await db.query(query);
   res.render('index', { title: 'Shoes', rows: result.rows });
