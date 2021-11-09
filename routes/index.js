@@ -8,9 +8,8 @@ let rt = true;
 
 // Home page
 router.get('/', async (req, res) => {
-  const query = 'SELECT * FROM restaurants';
+  let query = 'SELECT * FROM restaurants';
   // const query = 'SELECT shoe_brand FROM shoes';
-  
   if (req.query.sort === 'name') {
     if (rn === true) {
       query += ' ORDER BY name';
@@ -25,6 +24,8 @@ router.get('/', async (req, res) => {
       query += ' ORDER BY type DESC';
     }
     rt = !rt;
+  } else {
+    query += ' ORDER BY name';
   }
 
   const result = await db.query(query);
