@@ -5,11 +5,31 @@ const db = require('../db');
 const router = express.Router();
 let rn = false;
 let rt = true;
+let rr = true;
 
 // Home page
 router.get('/', async (req, res) => {
   let query = 'SELECT * FROM restaurants';
-  // const query = 'SELECT shoe_brand FROM shoes';
+  const params = [];
+
+  if (req.query.name) {
+    query += ' WHERE name ILIKE $1';
+    params.push('%' + req.query.name + '%');
+  } else if (req.query.type) {
+    query += ' WHERE type ILIKE $1';
+    params.push('%' + req.query.type + '%');
+  } else if (req.query.rating) {
+    query += ' WHERE rating >= $1';
+    params.push(req.query.rating);
+  } else if (req.query.minPrice) {
+    query += ' WHERE price >= $1';
+    params.push(req.query.minPrice);
+  } else if (req.query.maxPrice) {
+    query += ' WHERE price <= $1';
+    params.push(req.query.maxPrice);
+  }
+
+
   if (req.query.sort === 'name') {
     if (rn === true) {
       query += ' ORDER BY name';
@@ -24,11 +44,18 @@ router.get('/', async (req, res) => {
       query += ' ORDER BY type DESC';
     }
     rt = !rt;
+  } else if (req.query.sort === 'rating') {
+    if (rr === true) {
+      query += ' ORDER BY rating';
+    } else {
+      query += ' ORDER BY rating DESC';
+    }
+    rr = !rr;
   } else {
     query += ' ORDER BY name';
   }
 
-  const result = await db.query(query);
+  const result = await db.query(query, params);
   res.render('index', { title: 'Shoes', rows: result.rows });
 });
 
