@@ -6,6 +6,7 @@ const router = express.Router();
 let rn = false;
 let rt = true;
 let rr = true;
+let rp = true;
 
 // Home page
 router.get('/', async (req, res) => {
@@ -22,11 +23,11 @@ router.get('/', async (req, res) => {
     query += ' WHERE rating >= $1';
     params.push(req.query.rating);
   } else if (req.query.minPrice) {
-    query += ' WHERE price >= $1';
-    params.push(req.query.minPrice);
+    query += ' WHERE price ILIKE $1';
+    params.push('%' + req.query.minPrice + '%');
   } else if (req.query.maxPrice) {
-    query += ' WHERE price <= $1';
-    params.push(req.query.maxPrice);
+    query += ' WHERE NOT price ILIKE $1';
+    params.push('%' + req.query.maxPrice + '%');
   }
 
 
@@ -51,6 +52,13 @@ router.get('/', async (req, res) => {
       query += ' ORDER BY rating DESC';
     }
     rr = !rr;
+  } else if (req.query.sort === 'price') {
+    if (rp === true) {
+      query += ' ORDER BY price';
+    } else {
+      query += ' ORDER BY price DESC';
+    }
+    rp = !rp;
   } else {
     query += ' ORDER BY name';
   }

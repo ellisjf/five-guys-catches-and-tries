@@ -4,13 +4,13 @@
         <th>
             <a href="/?sort=name">Restaurant Name</a><br />
             <form>
-                <input name="name" />
+                <input name="name" placeholder="Enter restaurant name here"/>
             </form>
         </th>
         <th>
             <a href="/?sort=type">Restaurant Type</a><br />
             <form>
-                <input name="type" />
+                <input name="type" placeholder="Enter restaurant type here"/>
             </form>
         </th>
         <th>Hours
@@ -19,11 +19,19 @@
             <button type="submit" class="btn btn-primary">Submit</button>
     </form> --}}
         </th>
-        <th>Price</th>
+        <th>
+            <a href="/?sort=price">Price</a><br />
+            <form>
+                <input name="minPrice" placeholder="At least"/>
+            </form>
+            <form>
+                <input name="maxPrice" placeholder="Less than"/>
+            </form>
+        </th>
         <th>
             <a href="/?sort=rating">Rating</a><br />
             <form>
-                <input name="rating" />
+                <input name="rating" placeholder="Enter minimum rating here"/>
             </form>
         </th>
         <th>Menu</th>
