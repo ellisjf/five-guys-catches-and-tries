@@ -20,7 +20,15 @@
     </form> --}}
         </th>
         <th>
-            <a href="/?sort=price">Price</a><br />
+            <div class="tooltip">
+                <a href="/?sort=price">Price</a><br/>
+                <span class="tooltiptext">Price Key:
+                <br>$    :    $5  Average Price
+                <br>$$   :    $15 Average Price
+                <br>$$$  :    $20 Average Price
+                <br>$$$$ :    $25 Average Price
+                <br>$$$$$:    $30 Average Price</span>
+            </div>
             <form>
                 <input name="minPrice" placeholder="At least"/>
             </form>
@@ -35,6 +43,7 @@
             </form>
         </th>
         <th>Menu</th>
+        <th>Edit</th>
     </tr>
     {{#each rows}}
     <tr>
@@ -44,6 +53,7 @@
         <td>{{price}}</td>
         <td>{{rating}}</td>
         <td><a href="{{menu}}" target="_blank">Menu</a></td>
+        <td><a href="/{{id}}">Edit</a></td>
     </tr>
 
     {{/each}}

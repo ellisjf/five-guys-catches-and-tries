@@ -87,90 +87,46 @@ router.post('/', async (req, res) => {
   res.render('new-restaurant-result', { parameters: JSON.stringify(parameters) });
 });
 
-// List products
-// router.get('/shoes', async (req, res) => {
-//   const query = 'SELECT * FROM restaurants';
-//   // const query = 'SELECT shoe_brand FROM shoes';
+// Show an individual restaurants's edit form and delete button
+router.get('/:id', async (req, res) => {
+  const query = 'SELECT id, name, type, hours, price, rating, menu FROM restaurants WHERE id = $1;';
+  const parameters = [
+    req.params.id,
+  ];
 
-//   const result = await db.query(query);
+  const result = await db.query(query, parameters);
 
-//   res.render('shoe-list', { rows: result.rows });
-// });
+  res.render('edit-restaurant-form', { restaurants: result.rows[0], query, parameters: JSON.stringify(parameters) });
+});
 
-// // Sort List by Name of Shoe
-// router.get('/shoe-list', async (req, res) => {
-//   let query = 'SELECT shoes.shoe_brand, shoes.shoe_name, details.shoe_type, details.shoe_design, details.shoe_weight FROM shoes, details WHERE shoes.id=details.shoe_id';
-//   if (req.query.sort) {
-//     if (req.query.sort === 'shoe_nameAZ') {
-//       query += ' ORDER BY shoe_name';
-//     } else if (req.query.sort === 'shoe_brandAZ') {
-//       query += ' ORDER BY shoe_brand';
-//     } else if (req.query.sort === 'shoe_nameZA') {
-//       query += ' ORDER BY shoe_brand DESC';
-//     } else if (req.query.sort === 'shoe_brandZA') {
-//       query += ' ORDER BY shoe_brand DESC';
-//     }
-//   }
+// Update an individual restaurant
+router.post('/:id', async (req, res) => {
+  const query = 'UPDATE restaurants SET name = $1, type = $2, hours = $3, price = $4, rating = $5, menu = $6 WHERE id = $7';
+  const parameters = [
+    req.body.name,
+    req.body.type,
+    req.body.hours,
+    req.body.price,
+    req.body.rating,
+    req.body.menu,
+    req.params.id,
+  ];
 
-//   const result = await db.query(query);
+  await db.query(query, parameters);
 
-//   res.render('shoe-list', { rows: result.rows, query });
-// });
+  res.render('edit-customer-result', { query, parameters: JSON.stringify(parameters) });
+});
 
-// // Search List of Shoes for Shoe Type
-// router.get('/shoe-filter', async (req, res) => {
-//   const query = 'SELECT * FROM shoes INNER JOIN details ON shoes.id=details.shoe_id WHERE details.shoe_type LIKE $1';
-//   const parameters = [`%${req.query.search}%`];
-//   const result = await db.query(query, parameters);
-//   console.log(query, parameters);
+// Delete a restaurant record
+router.post('/:id/delete', async (req, res) => {
+  const query = 'DELETE FROM restaurants WHERE id = $1';
+  const parameters = [
+    req.params.id,
+  ];
 
-//   res.render('shoe-list', {
-//     rows: result.rows,
-//     query,
-//     parameters,
-//   });
-// });
+  await db.query(query, parameters);
 
-
-// // New product form
-// router.get('/shoes/create', (req, res) => {
-//   res.render('shoe-create');
-// });
-
-// // Store new product
-// router.post('/shoes', async (req, res) => {
-//   const brandQuery = 'INSERT INTO shoes (shoe_brand, shoe_name) VALUES ($1, $2) ';
-//   const detailsQuery = 'INSERT INTO details (details.shoe_type, details.shoe_design, details.shoe_weight) VALUES ($3, $4, $5)';
-//   const parameters = [
-//     req.body.shoebrand,
-//     req.body.shoename,
-//     req.body.shoetype,
-//     req.body.shoedesign,
-//     req.body.shoeweight,
-//   ];
-
-//   // eslint-disable-next-line no-unused-vars
-//   const result = await db.query(brandQuery, detailsQuery, parameters);
-
-//   res.render('new-shoe-result', { brandQuery, detailsQuery, parameters: JSON.stringify(parameters) });
-// });
-
-// // Show new shoe form
-// router.get('/shoes/create', (req, res) => {
-//   res.render('shoe-create');
-// });
-
-// // // Show an shoe brand name and details
-// // router.get('/shoes/:id', async (req, res) => {
-// //   const query = 'SELECT shoes.shoe_brand, shoes.shoe_name, details.shoe_type, details.shoe_design, details.shoe_weight FROM shoes INNER JOIN details ON shoes.id = details.shoe_id WHERE shoes.id = $1';
-// //   const parameters = [
-// //     req.params.id,
-// //   ];
-
-// //   const result = await db.query(query, parameters);
-
-// //   res.render('view-order', { rows: result.rows, query, parameters: JSON.stringify(parameters) });
-// // });
-
+  res.render('delete-customer-result', { query, parameters: JSON.stringify(parameters) });
+});
 
 module.exports = router;

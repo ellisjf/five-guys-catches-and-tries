@@ -1,0 +1,31 @@
+<a href="/">Back Home</a>
+<form action="/{{restaurants.id}}/delete" method="post" >
+    <button type="submit" >Delete Restaurant</button>
+</form>
+<form action="/{{customer.id}}" method="post">
+    <div class="form-group">
+        <label for="name">Restaurant Name</label>
+        <input type="text" class="form-control" name="username" value="{{restaurants.name}}">
+    </div>
+    <div class="form-group">
+        <label for="type">Restaurant Type</label>
+        <input type="text" class="form-control" name="type" value="{{restaurants.type}}">
+    </div>
+    <div class="form-group">
+        <label for="hours">Restaurant Hours</label>
+        <input type="text" class="form-control" name="hours" value="{{restaurants.hours}}">
+    </div>
+    <div class="form-group">
+        <label for="price">Restaurant Price</label>
+        <input type="text" class="form-control" name="price" value="{{restaurants.price}}">
+    </div>
+    <div class="form-group">
+        <label for="rating">Restaurant Rating</label>
+        <input type="text" class="form-control" name="rating" value="{{restaurants.rating}}">
+    </div>
+    <div class="form-group">
+        <label for="menu">Restaurant Menu Link</label>
+        <input type="text" class="form-control" name="menu" value="{{restaurants.menu}}">
+    </div>
+    <button type="submit">Submit</button>
+</form>
