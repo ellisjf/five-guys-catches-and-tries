@@ -64,7 +64,7 @@ router.get('/', async (req, res) => {
   }
 
   const result = await db.query(query, params);
-  res.render('index', { title: 'Shoes', rows: result.rows });
+  res.render('index', { rows: result.rows });
 });
 
 router.get('/create', (req, res) => {
@@ -72,7 +72,7 @@ router.get('/create', (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const query = 'INSERT INTO restaurants (name, type, hours, price, rating, menu) VALUES ($1, $2, $3, $4, $5, $6)';
+  const query = 'INSERT INTO screening (name, type, hours, price, rating, menu) VALUES ($1, $2, $3, $4, $5, $6)';
   const parameters = [
     req.body.name,
     req.body.type,
@@ -96,7 +96,7 @@ router.get('/:id', async (req, res) => {
 
   const result = await db.query(query, parameters);
 
-  res.render('edit-restaurant-form', { restaurants: result.rows[0], query, parameters: JSON.stringify(parameters) });
+  res.render('edit-restaurant-form', { restaurants: result.rows, parameters: JSON.stringify(parameters) });
 });
 
 // Update an individual restaurant
@@ -114,7 +114,7 @@ router.post('/:id', async (req, res) => {
 
   await db.query(query, parameters);
 
-  res.render('edit-customer-result', { query, parameters: JSON.stringify(parameters) });
+  res.render('edit-restaurant-result', { query, parameters: JSON.stringify(parameters) });
 });
 
 // Delete a restaurant record
@@ -126,7 +126,14 @@ router.post('/:id/delete', async (req, res) => {
 
   await db.query(query, parameters);
 
-  res.render('delete-customer-result', { query, parameters: JSON.stringify(parameters) });
+  res.render('delete-restaurant-result', { query, parameters: JSON.stringify(parameters) });
+});
+
+router.get('/admin', async (req, res) => {
+  const query = 'SELECT * FROM screening';
+  const result = await db.query(query);
+
+  res.render('admin', { rows: result.rows });
 });
 
 module.exports = router;

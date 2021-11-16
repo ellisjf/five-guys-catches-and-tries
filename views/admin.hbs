@@ -1,0 +1,25 @@
+<table>
+    <tr>
+        <th> Restaurant Name </th>
+        <th> Restaurant Type </th>
+        <th> Hours </th>
+        <th> Price </th>
+        <th> Rating </th>
+        <th> Menu </th>
+        <th> Edit </th>
+        <th> Approve </th>
+    </tr>
+    {{#each rows}}
+    <tr>
+        <td>{{name}}</td>
+        <td>{{type}}</td>
+        <td>{{hours}}</td>
+        <td>{{price}}</td>
+        <td>{{rating}}</td>
+        <td><a href="{{menu}}" target="_blank">Menu</a></td>
+        <td><a href="/{{id}}">Edit</a></td>
+        <td> Approve </td>
+    </tr>
+
+    {{/each}}
+</table>
