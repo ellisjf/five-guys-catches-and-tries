@@ -96,7 +96,7 @@ router.get('/:id', async (req, res) => {
 
   const result = await db.query(query, parameters);
 
-  res.render('edit-restaurant-form', { restaurants: result.rows[0], query, parameters: JSON.stringify(parameters) });
+  res.render('edit-restaurant-form', { restaurants: result.rows[0], parameters: JSON.stringify(parameters) });
 });
 
 // Update an individual restaurant
