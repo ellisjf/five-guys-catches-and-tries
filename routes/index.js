@@ -129,4 +129,11 @@ router.post('/:id/delete', async (req, res) => {
   res.render('delete-customer-result', { query, parameters: JSON.stringify(parameters) });
 });
 
+router.get('/admin', async (req, res) => {
+  const query = 'SELECT * FROM screening';
+  const result = await db.query(query);
+
+  res.render('admin', { rows: result.rows });
+});
+
 module.exports = router;
