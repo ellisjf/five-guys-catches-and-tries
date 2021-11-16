@@ -84,11 +84,11 @@ router.post('/', async (req, res) => {
 
   await db.query(query, parameters);
 
-  res.render('new-restaurant-result', { parameters: JSON.stringify(parameters) });
+  res.render('new-restaurant-result', { parameters});
 });
 
 // Show an individual restaurants's edit form and delete button
-router.get('/:id', async (req, res) => {
+router.get('/edit/:id', async (req, res) => {
   const query = 'SELECT id, name, type, hours, price, rating, menu FROM restaurants WHERE id = $1;';
   const parameters = [
     req.params.id,
@@ -96,11 +96,11 @@ router.get('/:id', async (req, res) => {
 
   const result = await db.query(query, parameters);
 
-  res.render('edit-restaurant-form', { restaurants: result.rows[0], parameters: JSON.stringify(parameters) });
+  res.render('edit-restaurant-form', { restaurants: result.rows[0], parameters });
 });
 
 // Update an individual restaurant
-router.post('/:id', async (req, res) => {
+router.post('/edit/:id', async (req, res) => {
   const query = 'UPDATE restaurants SET name = $1, type = $2, hours = $3, price = $4, rating = $5, menu = $6 WHERE id = $7';
   const parameters = [
     req.body.name,
@@ -114,11 +114,11 @@ router.post('/:id', async (req, res) => {
 
   await db.query(query, parameters);
 
-  res.render('edit-customer-result', { query, parameters: JSON.stringify(parameters) });
+  res.render('edit-customer-result', { query, parameters});
 });
 
 // Delete a restaurant record
-router.post('/:id/delete', async (req, res) => {
+router.post('/edit/:id/delete', async (req, res) => {
   const query = 'DELETE FROM restaurants WHERE id = $1';
   const parameters = [
     req.params.id,
@@ -126,7 +126,7 @@ router.post('/:id/delete', async (req, res) => {
 
   await db.query(query, parameters);
 
-  res.render('delete-customer-result', { query, parameters: JSON.stringify(parameters) });
+  res.render('delete-customer-result', { query, parameters });
 });
 
 router.get('/admin', async (req, res) => {
