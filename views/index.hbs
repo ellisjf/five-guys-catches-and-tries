@@ -10,14 +10,18 @@
         <th>
             <a href="/?sort=type">Restaurant Type</a><br />
             <form>
-                <input name="type" placeholder="Enter restaurant type here"/>
+                <select name="type">
+                    <option value="Bar">Bar</option>
+                    <option value="Fast Food">Fast Food</option>
+                    <option value="Italian">Italian</option>
+                    <option value="Deli">Deli</option>
+                    <option value="American">American</option>
+                    <option value="Pizza">Pizza</option>
+                </select>
+                <button type="submit">Go</button>
             </form>
         </th>
         <th>Hours
-    {{!-- <form action="/shoe-filter">
-            <input class="form-control" type="text" name="search">
-            <button type="submit" class="btn btn-primary">Submit</button>
-    </form> --}}
         </th>
         <th>
             <div class="tooltip">
