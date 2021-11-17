@@ -1,66 +1,68 @@
 <table>
 
+  <tr>
+    <th>
+      <a href="/?sort=name">Restaurant Name</a><br />
+      <form>
+        <input name="name" placeholder="Enter restaurant name here" />
+      </form>
+    </th>
+    <th>
+      <a href="/?sort=type">Restaurant Type</a><br />
+      <form>
+        <select name="type">
+          <option value="Bar">Bar</option>
+          <option value="Sandwiches">Sandwiches</option>
+          <option value="Pizza">Pizza</option>
+          <option value="Italian">Italian</option>
+          <option value="Mexican">Mexican</option>
+          <option value="Fast Food">Fast Food</option>
+          <option value="Ice Cream">Ice Cream</option>
+          <option value="Other">Other</option>
+        </select>
+        <button type="submit">Go</button>
+      </form>
+    </th>
+    <th>Hours
+    </th>
+    <th>
+      <div class="tooltip">
+        <a href="/?sort=price">Price</a><br />
+        <span class="tooltiptext">Price Key:
+          <br />$ : $5 Average Price
+          <br />$$ : $15 Average Price
+          <br />$$$ : $20 Average Price
+          <br />$$$$ : $25 Average Price
+          <br />$$$$$: $30 Average Price</span>
+      </div>
+      <form>
+        <input name="minPrice" placeholder="At least" />
+      </form>
+      <form>
+        <input name="maxPrice" placeholder="Less than" />
+      </form>
+    </th>
+    <th>
+      <a href="/?sort=rating">Rating</a><br />
+      <form>
+        <input name="rating" placeholder="Enter minimum rating here" />
+      </form>
+    </th>
+    <th>Menu</th>
+    <th>Edit</th>
+  </tr>
+  {{#each rows}}
     <tr>
-        <th>
-            <a href="/?sort=name">Restaurant Name</a><br />
-            <form>
-                <input name="name" placeholder="Enter restaurant name here"/>
-            </form>
-        </th>
-        <th>
-            <a href="/?sort=type">Restaurant Type</a><br />
-            <form>
-                <select name="type">
-                    <option value="Bar">Bar</option>
-                    <option value="Fast Food">Fast Food</option>
-                    <option value="Italian">Italian</option>
-                    <option value="Deli">Deli</option>
-                    <option value="American">American</option>
-                    <option value="Pizza">Pizza</option>
-                </select>
-                <button type="submit">Go</button>
-            </form>
-        </th>
-        <th>Hours
-        </th>
-        <th>
-            <div class="tooltip">
-                <a href="/?sort=price">Price</a><br/>
-                <span class="tooltiptext">Price Key:
-                <br>$    :    $5  Average Price
-                <br>$$   :    $15 Average Price
-                <br>$$$  :    $20 Average Price
-                <br>$$$$ :    $25 Average Price
-                <br>$$$$$:    $30 Average Price</span>
-            </div>
-            <form>
-                <input name="minPrice" placeholder="At least"/>
-            </form>
-            <form>
-                <input name="maxPrice" placeholder="Less than"/>
-            </form>
-        </th>
-        <th>
-            <a href="/?sort=rating">Rating</a><br />
-            <form>
-                <input name="rating" placeholder="Enter minimum rating here"/>
-            </form>
-        </th>
-        <th>Menu</th>
-        <th>Edit</th>
-    </tr>
-    {{#each rows}}
-    <tr>
-        <td>{{name}}</td>
-        <td>{{type}}</td>
-        <td>{{hours}}</td>
-        <td>{{price}}</td>
-        <td>{{rating}}</td>
-        <td><a href="{{menu}}" target="_blank">Menu</a></td>
-        <td><a href="/edit/{{id}}">Edit</a></td>
+      <td>{{name}}</td>
+      <td>{{type}}</td>
+      <td>{{hours}}</td>
+      <td>{{price}}</td>
+      <td>{{rating}}</td>
+      <td><a href="{{menu}}" target="_blank">Menu</a></td>
+      <td><a href="/edit/{{id}}">Edit</a></td>
     </tr>
 
-    {{/each}}
+  {{/each}}
 </table>
-<button type="create" ><a href="/create">Create</a></button>
-<button type="create" ><a href="/admin">Login</a></button>
+<button type="create"><a href="/create">Create</a></button>
+<button type="create"><a href="/admin">Login</a></button>
