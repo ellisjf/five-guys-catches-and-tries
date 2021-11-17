@@ -1,3 +1,6 @@
+# This file handles which packages are used
+# Update 11-17-21 Documentation
+# Update 11-16-21 Original Creation
 {
   "name": "express-hbs",
   "version": "0.0.0",
