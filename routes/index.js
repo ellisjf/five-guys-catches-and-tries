@@ -3,7 +3,7 @@ Js for handling the bulk of the website, including
 searches, sorts, filters, approving admin restaurants,
 and more.
 Update 11-17-21 Documentation
-Update 11-16-21 Original Creation 
+Update 11-16-21 Original Creation
 */
 
 /* eslint-disable max-len */
@@ -122,7 +122,7 @@ router.post('/edit/:id', async (req, res) => {
 
   await db.query(query, parameters);
 
-  res.render('complete', { query, parameters});
+  res.render('complete', { query, parameters });
 });
 
 // Delete a restaurant record
@@ -185,7 +185,7 @@ router.post('/admin/edit/:id/delete', async (req, res) => {
 
   await db.query(query, parameters);
 
-  res.render('complete-admin', { query, parameters});
+  res.render('complete-admin', { query, parameters });
 });
 
 router.post('/admin/edit/:id/approve', async (req, res) => {
