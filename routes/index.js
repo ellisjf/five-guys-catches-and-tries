@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
     params.push('%' + req.query.name + '%');
   } else if (req.query.type) {
     query += ' WHERE type ILIKE $1';
-    params.push('%' + req.query.type + '%');
+    params.push(req.query.type);
   } else if (req.query.rating) {
     query += ' WHERE rating >= $1';
     params.push(req.query.rating);
@@ -142,6 +142,25 @@ router.get('/admin', async (req, res) => {
   const result = await db.query(query);
 
   res.render('admin', { rows: result.rows });
+});
+
+router.get('/login', async (req, res) => {
+  res.render('login');
+});
+
+router.post('/login', async (req, res) => {
+  const query = 'SELECT * FROM login WHERE username = $1';
+  const result = await db.query(query, [req.body.username]);
+
+  if (result.rows.length === 1) {
+    if (req.body.password === result.rows[0].password) {
+      res.redirect('/admin');
+    } else {
+      res.redirect('/');
+    }
+  } else {
+    res.redirect('/');
+  }
 });
 
 // ADMIN STUFF AFTER HERE ------------------------------------------------------------------------------
