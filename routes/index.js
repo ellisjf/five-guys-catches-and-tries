@@ -84,7 +84,7 @@ router.post('/', async (req, res) => {
 
   await db.query(query, parameters);
 
-  res.render('new-restaurant-result', { parameters});
+  res.render('new-restaurant-result', { parameters });
 });
 
 // Show an individual restaurants's edit form and delete button
@@ -114,7 +114,7 @@ router.post('/edit/:id', async (req, res) => {
 
   await db.query(query, parameters);
 
-  res.render('edit-customer-result', { query, parameters});
+  res.render('edit-customer-result', { query, parameters });
 });
 
 // Delete a restaurant record
