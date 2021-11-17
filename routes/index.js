@@ -4,7 +4,6 @@ searches, sorts, filters, approving admin restaurants,
 and more.
 Update 11-17-21 Documentation
 Update 11-16-21 Original Creation 
--->
 */
 
 /* eslint-disable max-len */
