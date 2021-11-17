@@ -1,6 +1,6 @@
 # This file handles selecting the database
 # Update 11-17-21 Documentation
-# Update 10-27-21 Original Creationconst 
+# Update 10-27-21 Original Creation
 <?php
 	$username = "jordanmg_sparkData";
 	$password = "ittechprep?";
