@@ -114,7 +114,7 @@ router.post('/edit/:id', async (req, res) => {
 
   await db.query(query, parameters);
 
-  res.render('edit-customer-result', { query, parameters});
+  res.render('complete', { query, parameters});
 });
 
 // Delete a restaurant record
@@ -126,7 +126,7 @@ router.post('/edit/:id/delete', async (req, res) => {
 
   await db.query(query, parameters);
 
-  res.render('delete-customer-result', { query, parameters });
+  res.render('complete', { query, parameters });
 });
 
 router.get('/admin', async (req, res) => {
@@ -134,6 +134,61 @@ router.get('/admin', async (req, res) => {
   const result = await db.query(query);
 
   res.render('admin', { rows: result.rows });
+});
+
+// ADMIN STUFF AFTER HERE ------------------------------------------------------------------------------
+
+// Show an individual restaurants's edit form and delete button
+router.get('/admin/edit/:id', async (req, res) => {
+  const query = 'SELECT id, name, type, hours, price, rating, menu FROM screening WHERE id = $1;';
+  const parameters = [
+    req.params.id,
+  ];
+
+  const result = await db.query(query, parameters);
+
+  res.render('edit-restaurant-form-admin', { restaurants: result.rows[0], parameters });
+});
+
+// Update an individual restaurant
+router.post('/admin/edit/:id', async (req, res) => {
+  const query = 'UPDATE screening SET name = $1, type = $2, hours = $3, price = $4, rating = $5, menu = $6 WHERE id = $7';
+  const parameters = [
+    req.body.name,
+    req.body.type,
+    req.body.hours,
+    req.body.price,
+    req.body.rating,
+    req.body.menu,
+    req.params.id,
+  ];
+
+  await db.query(query, parameters);
+
+  res.render('complete-admin', { query, parameters});
+});
+
+// Delete a restaurant record
+router.post('/admin/edit/:id/delete', async (req, res) => {
+  const query = 'DELETE FROM screening WHERE id = $1';
+  const parameters = [
+    req.params.id,
+  ];
+
+  await db.query(query, parameters);
+
+  res.render('complete-admin', { query, parameters});
+});
+
+router.post('/admin/approve/:id', async (req, res) => {
+  const query = 'INSERT INTO restaurants SELECT * FROM screening WHERE id = $1';
+  const parameters = [
+    req.params.id,
+  ];
+
+  await db.query(query, parameters);
+
+  res.render('complete-admin', { query, parameters});
 });
 
 module.exports = router;
