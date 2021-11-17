@@ -1,5 +1,7 @@
 /*
-Js for handling the searches, sorts, filters,
+Js for handling the bulk of the website, including
+searches, sorts, filters, approving admin restaurants,
+and more.
 Update 11-17-21 Documentation
 Update 11-16-21 Original Creation 
 -->
