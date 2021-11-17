@@ -1,7 +1,7 @@
 # This file handles the table on the webiste,
 # as well as the interactive map on the page.
 # Update 11-17-21 Documentation
-# Update 11-16-21 Original Creation
+# Update 10-27-21 Original Creation
 <?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
