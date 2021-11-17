@@ -1,4 +1,6 @@
-{
+# This is an auto generated file to lock our dependencies
+# Update 11-17-21 Documentation
+# Update 10-27-21 Original Creationconst {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
