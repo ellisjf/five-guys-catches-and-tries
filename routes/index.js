@@ -80,7 +80,7 @@ router.get('/create', (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const query = 'INSERT INTO restaurants (name, type, hours, price, rating, menu) VALUES ($1, $2, $3, $4, $5, $6)';
+  const query = 'INSERT INTO screening (name, type, hours, price, rating, menu) VALUES ($1, $2, $3, $4, $5, $6)';
   const parameters = [
     req.body.name,
     req.body.type,
