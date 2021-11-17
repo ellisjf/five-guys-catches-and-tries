@@ -1,3 +1,10 @@
+/*
+Js for handling the searches, sorts, filters,
+Update 11-17-21 Documentation
+Update 11-16-21 Original Creation 
+-->
+*/
+
 /* eslint-disable max-len */
 const express = require('express');
 const db = require('../db');
