@@ -1,3 +1,7 @@
+// This file handles idk yet
+// Update 11-17-21 Documentation
+// Update 10-27-21 Original Creation
+
 require('dotenv').config();
 const createError = require('http-errors');
 const express = require('express');
