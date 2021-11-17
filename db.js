@@ -1,7 +1,10 @@
-const { Pool } = require('pg');
+# This file handles accessing the database with correct information
+# Update 11-17-21 Documentation
+# Update 10-27-21 Original Creationconst { Pool } = require('pg');
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } });
 
+# If bad info, send error
 if (
   !(
     process.env.PGUSER &&
