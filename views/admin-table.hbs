@@ -49,6 +49,7 @@
       </form>
     </th>
     <th>Menu</th>
+    <th>Edit</th>
   </tr>
   {{#each rows}}
     <tr>
@@ -58,9 +59,11 @@
       <td>{{price}}</td>
       <td>{{rating}}</td>
       <td><a href="{{menu}}" target="_blank">Menu</a></td>
+      <td><a href="/edit/{{id}}">Edit</a></td>
     </tr>
 
   {{/each}}
 </table>
-<button type="create"><a href="/create">Create</a></button>
-<button type="create"><a href="/admin">Login</a></button>
+
+<button type="create"><a href="/admin">Approve Submissions</a></button>
+<button type="create"><a href="/">Back to Home</a></button>

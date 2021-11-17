@@ -165,7 +165,7 @@ router.post('/admin/edit/:id', async (req, res) => {
 
   await db.query(query, parameters);
 
-  res.render('complete-admin', { query, parameters});
+  res.render('complete-admin', { query, parameters });
 });
 
 // Delete a restaurant record
@@ -180,15 +180,26 @@ router.post('/admin/edit/:id/delete', async (req, res) => {
   res.render('complete-admin', { query, parameters});
 });
 
-router.post('/admin/approve/:id', async (req, res) => {
-  const query = 'INSERT INTO restaurants SELECT * FROM screening WHERE id = $1';
+router.post('/admin/edit/:id/approve', async (req, res) => {
+  const query = 'INSERT INTO restaurants (name, type, hours, price, rating, menu) VALUES ($1, $2, $3, $4, $5, $6)';
   const parameters = [
-    req.params.id,
+    req.body.name,
+    req.body.type,
+    req.body.hours,
+    req.body.price,
+    req.body.rating,
+    req.body.menu,
   ];
-
   await db.query(query, parameters);
 
-  res.render('complete-admin', { query, parameters});
+  res.render('complete-admin', { query, parameters });
+});
+
+router.get('/admin/table', async (req, res) => {
+  const query = 'SELECT * FROM restaurants';
+  const result = await db.query(query);
+
+  res.render('admin-table', { rows: result.rows });
 });
 
 module.exports = router;

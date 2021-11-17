@@ -6,7 +6,6 @@
         <th> Price </th>
         <th> Rating </th>
         <th> Menu </th>
-        <th> Edit </th>
         <th> Approve </th>
     </tr>
     {{#each rows}}
@@ -17,9 +16,11 @@
         <td>{{price}}</td>
         <td>{{rating}}</td>
         <td><a href="{{menu}}" target="_blank">Menu</a></td>
-        <td><a href="/admin/edit/{{id}}">Edit</a></td>
-        <td><a href="/admin/approve/{{id}}">Approve</a></td>
+        <td><a href="/admin/edit/{{id}}">Approve</a></td>
     </tr>
 
     {{/each}}
 </table>
+
+<button type="create"><a href="/admin/table">Edit Main Table</a></button>
+<button type="create"><a href="/">Back to Home</a></button>
