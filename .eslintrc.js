@@ -1,3 +1,6 @@
+// This handles js libraries?
+// Update 11-17-21 Documentation
+// Update 10-27-21 Original Creation
 module.exports = {
   env: {
     browser: true,
