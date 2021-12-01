@@ -217,7 +217,13 @@ router.post('/admin/edit/:id/approve', async (req, res) => {
     req.body.rating,
     req.body.menu,
   ];
+  const del = 'DELETE FROM screening WHERE id = $1';
+  const delParameters = [
+    req.params.id,
+  ];
+
   await db.query(query, parameters);
+  await db.query(del, delParameters);
 
   res.render('complete-admin', { query, parameters });
 });
